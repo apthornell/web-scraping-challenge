@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
  
-app.config["MONGO_URI"] = "mongodb://localhost:5000/mars_app"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/mars_app"
 mongo = PyMongo(app)
 
 @app.route("/")
@@ -25,7 +25,7 @@ def scrape():
     mars_data = scrape_mars.scrape_mars_news()
     mars_data = scrape_mars.scrape_mars_image()
     mars_f = scrape_mars.scrape_mars_facts()
-    mars_w = scrape_mars.scrape_mars_weather()
+    
     mars_data = scrape_mars.scrape_mars_hemispheres()
     mars_info.update({}, mars_data, upsert=True)
 

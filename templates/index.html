@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" type="image" href="https://pngimg.com/uploads/mars_planet/mars_planet_PNG13.png">
+    <link rel="icon" type="image" href="http://pngimg.com/uploads/mars_planet/mars_planet_PNG37.png">
     <title>Mission to Mars</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -15,7 +15,7 @@
 <body class="text-white" style="background-color:black;">
     <div class="container">
 
-        <div class="jumbotron text-center" style="background-image: url(https://cdn.theatlantic.com/static/mt/assets/science/0831Pic.jpg); background-size: 100%; height: 100%;">
+        <div class="jumbotron text-center" style="background-image: url(http://www.baltana.com/files/wallpapers-14/Mars-High-Definition-Wallpaper-36964.jpg); background-size: 100%; height: 100%;">
             <h1 class="display-4">Mission to Mars</h1>
             <a class="btn btn-lg text-white" style="background-color:#c1440e;" href="/scrape" role="button">Scrape New
                 Data</a>
@@ -31,19 +31,10 @@
             <div class="row">
                 <div class="col-lg-8 col-md-8 col-sm-12">
                     <h3>Featured Mars Image</h3>
-                    <img src="{{ mars_info.image_url }}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
+                    <img src="{{ mars_info.img_url }}" style="max-width:100%; max-height: auto;" alt="Mars Featured Image">
                 </div>
 
                 
-                <div class="col-lg-4 col-md-4 col-sm-12">
-
-                    <div class="card" style="width: 18rem;">
-                        <div class="card-body text-white bg-dark">
-                            <h6 class="card-title">Current Weather on Mars</h6>
-                            <p class="card-text">{{ mars_info.mars_weather}}</p>
-                        </div>
-
-                    </div>
 
                     <br>
                     <h3>Mars Facts</h3>

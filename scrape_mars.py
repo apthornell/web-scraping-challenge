@@ -6,30 +6,29 @@ import time
 import requests
 import warnings
 warnings.filterwarnings('ignore')
-
+mars_info = {}
 def init_browser():
     # @NOTE: Path to my chromedriver
     executable_path = {"executable_path": "C:\\Users\\andre\\Desktop\chromedriver"}
-    return Browser("chrome", **executable_path, headless=False)
+    return Browser("chrome", **executable_path, headless=True)
 
-    mars_info = {}
+    
 
-    def scrape_mars_news():
-        browser = init_browser()
-        url = 'https://mars.nasa.gov/news/'
-        browser.visit(url)
-        html = browser.html
-        soup = bs(html, 'html.parser')
+def scrape_mars_news():
+    browser = init_browser()
+    url = 'https://mars.nasa.gov/news/'
+    browser.visit(url)
+    html = browser.html
+    soup = bs(html, 'html.parser')
+    news_title = soup.find('div', class_ = 'list_text').find('div', class_="content_title").find('a').text
+    news_p = soup.find('div', class_= 'article_teaser_body').text
 
-        news_title = soup.find('div', class_ = 'content_title').find('a').text
-        news_p = soup.find('div', class_= 'article_teaser_body').text
+    mars_info['news_title']= news_title
+    mars_info['news_paragraph']= news_p
+    print(mars_info)
+    return mars_info
 
-        mars_info['news_title']= news_title
-        mars_info['news_paragraph']= news_p
-
-        return mars_info
-
-        browser.quit()
+    browser.quit()
 
 def scrape_mars_image():
     browser = init_browser()
@@ -44,9 +43,9 @@ def scrape_mars_image():
     img_url = main_url + image_url
     img_url
     mars_info['img_url'] = img_url
-
+    browser.quit()
     return mars_info
-    browser.quit
+    
 
 def scrape_mars_facts():
     browser = init_browser()
@@ -55,7 +54,7 @@ def scrape_mars_facts():
     browser.visit(url)
 
     tables = pd.read_html(url)
-    df = tables[1]
+    df = tables[0]
 
     df.columns = ['Description', 'Value']
     html_table = df.to_html(table_id="html_tbl_css", justify="left", index=False)
@@ -69,7 +68,7 @@ def scrape_mars_hemispheres():
 
     hemispheres_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(hemispheres_url)
-
+    hiu = []
     html_hemispheres = browser.html
     soup = bs(html_hemispheres, 'html.parser')
     items = soup.find_all('div', class_='item')
